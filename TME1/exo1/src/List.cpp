@@ -1,3 +1,7 @@
+#include <cstddef>
+#include <iostream> //rajouter l'include iostream (librairie standard)
+#include <string> //rajouter l'include string (librairie standard)
+#include "List.h" //rajouter le fichier interface
 
 namespace pr {
 
