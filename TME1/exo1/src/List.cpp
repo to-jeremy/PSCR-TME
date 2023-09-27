@@ -13,7 +13,7 @@ size_t Chainon::length() {
 	if (next != nullptr) {
 		len += next->length();
 	}
-	return length();
+	return len(); //Renvoyer len au lieu de length()
 }
 
 void Chainon::print (std::ostream & os) {
@@ -49,7 +49,7 @@ void List::push_front (const std::string& val) {
 	tete = new Chainon(val,tete);
 }
 
-bool empty() {
+bool pr::List::empty() { //Ajout du préfixe de classe
 	return tete == nullptr;
 }
 
