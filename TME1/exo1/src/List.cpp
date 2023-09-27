@@ -13,7 +13,7 @@ size_t Chainon::length() {
 	if (next != nullptr) {
 		len += next->length();
 	}
-	return len(); //Renvoyer len au lieu de length()
+	return len; //Renvoyer len au lieu de length()
 }
 
 void Chainon::print (std::ostream & os) {
