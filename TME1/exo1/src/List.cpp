@@ -16,12 +16,12 @@ size_t Chainon::length() {
 	return len; //FAUTE : Renvoyer len au lieu de length()
 }
 
-void Chainon::print (std::ostream & os) {
+void Chainon::print (std::ostream & os) const { //FAUTE : manque le const
 	os << data ;
 	if (next != nullptr) {
 		os << ", ";
+		next->print(os); //FAUTE : mettre à l'intérieur de la condition if
 	}
-	next->print(os);
 }
 
 // ******************  List
@@ -61,9 +61,7 @@ size_t List::size() const {
 	}
 }
 
-} // namespace pr
-
-std::ostream & operator<< (std::ostream & os, const pr::List & vec)
+std::ostream & operator<< (std::ostream & os, const pr::List & vec) //FAUTE : il doit être inclus dans le namespace pr
 {
 	os << "[";
 	if (vec.tete != nullptr) {
@@ -72,4 +70,6 @@ std::ostream & operator<< (std::ostream & os, const pr::List & vec)
 	os << "]";
 	return os;
 }
+
+} // namespace pr
 
