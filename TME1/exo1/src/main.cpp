@@ -10,6 +10,7 @@ int main () {
 	str[0] = 'a';
 	str[1] = 'b';
 	str[2] = 'c';
+	str[3] = '\0';
 	int i = 0; //Remplacer size_t en int pour faire i >= 0
 
 	if (! strcmp (str, abc.c_str())) {
@@ -24,14 +25,14 @@ int main () {
 	std::cout << "Taille : " << list.size() << std::endl;
 
 	// Affiche à l'envers
-	for (i = static_cast<int>(list.size()) - 1; i >= 0; i--) { //Cast size_t en int
+	for (i= list.size() - 1 ; i >= 0 ; i--) {
 		std::cout << "elt " << i << ": " << list[i] << std::endl;
 	}
 
 	// liberer les char de la chaine
-	for (char *cp = str ; *cp ; cp++) {
-		delete cp;
-	}
+	//for (char *cp = str ; *cp ; cp++) {
+	//	delete cp;
+	//}
 	// et la chaine elle meme
 	delete[] str; //mettre des crochets vides
 
