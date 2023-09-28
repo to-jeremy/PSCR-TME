@@ -11,7 +11,7 @@ int main () {
 	str[1] = 'b';
 	str[2] = 'c';
 	str[3] = '\0';
-	int i = 0; //Remplacer size_t en int pour faire i >= 0
+	int i = 0; //FAUTE : Remplacer size_t en int pour faire i >= 0
 
 	if (! strcmp (str, abc.c_str())) {
 		std::cout << "Equal !";

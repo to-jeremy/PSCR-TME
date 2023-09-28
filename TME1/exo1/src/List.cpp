@@ -1,7 +1,7 @@
 #include <cstddef>
 #include <iostream> //rajouter l'include iostream (librairie standard)
 #include <string> //rajouter l'include string (librairie standard)
-#include "List.h" //rajouter le fichier interface
+#include "List.h" //FAUTE : rajouter le fichier interface
 
 namespace pr {
 
@@ -13,7 +13,7 @@ size_t Chainon::length() {
 	if (next != nullptr) {
 		len += next->length();
 	}
-	return len; //Renvoyer len au lieu de length()
+	return len; //FAUTE : Renvoyer len au lieu de length()
 }
 
 void Chainon::print (std::ostream & os) {
@@ -49,7 +49,7 @@ void List::push_front (const std::string& val) {
 	tete = new Chainon(val,tete);
 }
 
-bool pr::List::empty() { //Ajout du préfixe de classe
+bool pr::List::empty() { //FAUTE : Ajout du préfixe de classe
 	return tete == nullptr;
 }
 
