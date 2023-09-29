@@ -10,8 +10,9 @@ List.o: List.cpp /usr/include/stdc-predef.h /usr/include/c++/12/cstddef \
  /usr/include/x86_64-linux-gnu/gnu/stubs-64.h \
  /usr/include/x86_64-linux-gnu/c++/12/bits/cpu_defines.h \
  /usr/lib/gcc/x86_64-linux-gnu/12/include/stddef.h \
- /usr/include/c++/12/ostream /usr/include/c++/12/ios \
- /usr/include/c++/12/iosfwd /usr/include/c++/12/bits/stringfwd.h \
+ /usr/include/c++/12/iostream /usr/include/c++/12/ostream \
+ /usr/include/c++/12/ios /usr/include/c++/12/iosfwd \
+ /usr/include/c++/12/bits/stringfwd.h \
  /usr/include/c++/12/bits/memoryfwd.h /usr/include/c++/12/bits/postypes.h \
  /usr/include/c++/12/cwchar /usr/include/wchar.h \
  /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
@@ -142,7 +143,8 @@ List.o: List.cpp /usr/include/stdc-predef.h /usr/include/c++/12/cstddef \
  /usr/include/x86_64-linux-gnu/c++/12/bits/ctype_inline.h \
  /usr/include/c++/12/bits/locale_facets.tcc \
  /usr/include/c++/12/bits/basic_ios.tcc \
- /usr/include/c++/12/bits/ostream.tcc List.h
+ /usr/include/c++/12/bits/ostream.tcc /usr/include/c++/12/istream \
+ /usr/include/c++/12/bits/istream.tcc List.h
 /usr/include/stdc-predef.h:
 /usr/include/c++/12/cstddef:
 /usr/include/x86_64-linux-gnu/c++/12/bits/c++config.h:
@@ -157,6 +159,7 @@ List.o: List.cpp /usr/include/stdc-predef.h /usr/include/c++/12/cstddef \
 /usr/include/x86_64-linux-gnu/gnu/stubs-64.h:
 /usr/include/x86_64-linux-gnu/c++/12/bits/cpu_defines.h:
 /usr/lib/gcc/x86_64-linux-gnu/12/include/stddef.h:
+/usr/include/c++/12/iostream:
 /usr/include/c++/12/ostream:
 /usr/include/c++/12/ios:
 /usr/include/c++/12/iosfwd:
@@ -320,4 +323,6 @@ List.o: List.cpp /usr/include/stdc-predef.h /usr/include/c++/12/cstddef \
 /usr/include/c++/12/bits/locale_facets.tcc:
 /usr/include/c++/12/bits/basic_ios.tcc:
 /usr/include/c++/12/bits/ostream.tcc:
+/usr/include/c++/12/istream:
+/usr/include/c++/12/bits/istream.tcc:
 List.h:
