@@ -37,4 +37,14 @@ public:
         site_t operator (const K &) {};
     }
 
+    iterator begin(){
+    size_t index=0;
+    for(   ; index<buckets.size(); ++index){
+        if(!buckets[index].empty()){
+            break;
+        } //index==buckets.size()   size==0;<=>rendre end();
+        
+        return iterator(buckets,index,buckets[index]begin());
+    }
+    }
 }
