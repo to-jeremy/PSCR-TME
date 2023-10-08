@@ -12,8 +12,7 @@ namespace pr {
 
     class HashMap {
     public:
-        class Entry
-        {
+        class Entry {
         public:
             const K key;
             V value;
@@ -28,7 +27,7 @@ namespace pr {
         size_t sz;
 
     public:
-        HashMap(site_t size) : buckets(size), sz(0) {}
+        HashMap(size_t size) : buckets(size), sz(0) {}
 
         V* get (const K & key) {
             size_t h = std::hash<K>()(key);
@@ -41,9 +40,9 @@ namespace pr {
             return nullptr;
         }
 
-        bool put(const k & key const k & value) {
-            size_t h = std::hash<k>()(key);
-            site_t target = h % buckets.size();
+        bool put(const K &key, const V &value) {
+            size_t h = std::hash<K>()(key);
+            size_t target = h % buckets.size();
             for (auto &ent : buckets[target]) {
                 if (ent.key == key) {
                     ent.value = value;
