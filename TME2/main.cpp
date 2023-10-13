@@ -23,18 +23,26 @@ int main()
     string word;
     regex re(R"([^a-zA-Z])");
 
-    pr::HashMap<string, size_t> wordCountHashMap(100);
+    //pr::HashMap<string, size_t> wordCountHashMap(100);
+    pr::HashMap<string, int> wordCountHashMap(100); //Utilisation de HashMap avec des int pour les occurences
 
     while (input >> word)
     {
         word = regex_replace(word, re, "");
         transform(word.begin(), word.end(), word.begin(), ::tolower);
 
-        size_t* countPtr = wordCountHashMap.get(word);
-        if (countPtr) {
+        //size_t* countPtr = wordCountHashMap.get(word);
+        size_t* occurrencesPtr = wordCountHashMap.get(word);
+        /*if (countPtr) {
             (*countPtr)++;
         } else {
             wordCountHashMap.put(word, static_cast<size_t>(1));
+        }*/
+
+        if (occurencesPtr) {
+            (*occurencesPtr)++;
+        } else {
+            wordCountHashMap.put(word, 1);
         }
 
         bool trouve = false;
@@ -67,12 +75,20 @@ int main()
     size_t numberOfDifferentWords = wordCountHashMap.size();
     cout << "Found a total of " << numberOfDifferentWords << " different words." << endl;
 
-    for (const string &targetWord : {"war", "peace", "toto"})
+    /*for (const string &targetWord : {"war", "peace", "toto"})
     {
         size_t* occurrencesPtr = wordCountHashMap.get(targetWord);
         size_t occurrences = (occurrencesPtr) ? *occurrencesPtr : 0;
         cout << "Occurrences of \"" << targetWord << "\": " << occurrences << endl;
-    }
+    }*/
+
+    size_t occurrencesOfWar = *(wordCountHashMap.get("war"));
+    size_t occurrencesOfPeace = *(wordCountHashMap.get("peace"));
+    size_t occurrencesOfToto = *(wordCountHashMap.get("toto"));
+
+    cout << "Occurrences of \"war\": " << occurrencesOfWar << endl;
+    cout << "Occurrences of \"peace\": " << occurrencesOfPeace << endl;
+    cout << "Occurrences of \"toto\": " << occurrencesOfToto << endl;
 
     return 0;
 }

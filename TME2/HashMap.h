@@ -1,3 +1,5 @@
+//TME2 HashMap
+
 #ifndef SRC_HASHMAP_H_
 #define SRC_HASHMAP_H_
 
