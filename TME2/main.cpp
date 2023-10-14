@@ -3,92 +3,77 @@
 #include <regex>
 #include <chrono>
 #include <vector>
-#include <unordered_map> // Pour la question 2
-#include "HashMap.h" // Inclusion de la classe HashMap que vous avez implémentée
+#include "HashMap.h"
 
-int main()
-{
+int main() {
     using namespace std;
     using namespace std::chrono;
 
-    ifstream input = ifstream("./WarAndPeace.txt");
+    ifstream input("./WarAndPeace.txt");
+    if (!input) {
+        cerr << "Erreur lors de l'ouverture du fichier WarAndPeace.txt" << endl;
+        return 1;
+    }
 
     auto start = steady_clock::now();
-    cout << "Parsing War and Peace" << endl;
+    cout << "Analyse de War and Peace en cours..." << endl;
 
-    vector<pair<string, size_t>> freq; //Pour la question 3
-    unordered_map<string, size_t> wordCount; //Pour la question 2
+    pr::HashMap<string, int> wordCountHashMap(100); // Utilisation de HashMap avec des int pour les occurrences
 
-    size_t nombre_lu = 0;
+    size_t totalWords = 0;
     string word;
     regex re(R"([^a-zA-Z])");
 
-    //pr::HashMap<string, size_t> wordCountHashMap(100);
-    pr::HashMap<string, int> wordCountHashMap(100); //Utilisation de HashMap avec des int pour les occurences
-
-    while (input >> word)
-    {
+    while (input >> word) {
         word = regex_replace(word, re, "");
         transform(word.begin(), word.end(), word.begin(), ::tolower);
 
-        //size_t* countPtr = wordCountHashMap.get(word);
-        size_t* occurrencesPtr = wordCountHashMap.get(word);
-        /*if (countPtr) {
-            (*countPtr)++;
-        } else {
-            wordCountHashMap.put(word, static_cast<size_t>(1));
-        }*/
+        int* occurrencesPtr = wordCountHashMap.get(word);
 
-        if (occurencesPtr) {
-            (*occurencesPtr)++;
+        if (occurrencesPtr) {
+            (*occurrencesPtr)++;
         } else {
             wordCountHashMap.put(word, 1);
         }
 
-        bool trouve = false;
-
-        for (auto &pair : freq)
-        {
-            if (pair.first == word)
-            {
-                trouve = true;
-                pair.second++;
-                break;
-            }
-        }
-        if (!trouve)
-        {
-            freq.emplace_back(word, 1);
-
-            if (nombre_lu % 100 == 0)
-                cout << nombre_lu << ": " << word << endl;
-            nombre_lu++;
-        }
+        totalWords++;
     }
     input.close();
 
-    cout << "Finished Parsing War and Peace" << endl;
+    cout << "Analyse de War and Peace terminée." << endl;
 
     auto end = steady_clock::now();
-    cout << "Parsing took " << duration_cast<milliseconds>(end - start).count() << "ms.\n";
+    cout << "L'analyse a pris " << duration_cast<milliseconds>(end - start).count() << "ms." << endl;
 
     size_t numberOfDifferentWords = wordCountHashMap.size();
-    cout << "Found a total of " << numberOfDifferentWords << " different words." << endl;
+    cout << "Nombre total de mots différents : " << numberOfDifferentWords << endl;
 
-    /*for (const string &targetWord : {"war", "peace", "toto"})
-    {
-        size_t* occurrencesPtr = wordCountHashMap.get(targetWord);
-        size_t occurrences = (occurrencesPtr) ? *occurrencesPtr : 0;
-        cout << "Occurrences of \"" << targetWord << "\": " << occurrences << endl;
-    }*/
+    // Question 6 : Afficher le nombre d'occurrences de certains mots
+    const string wordsToFind[] = {"war", "peace", "toto"};
+    for (const string& targetWord : wordsToFind) {
+        int* occurrencesPtr = wordCountHashMap.get(targetWord);
+        if (occurrencesPtr) {
+            cout << "Occurrences de \"" << targetWord << "\": " << *occurrencesPtr << endl;
+        }
+    }
 
-    size_t occurrencesOfWar = *(wordCountHashMap.get("war"));
-    size_t occurrencesOfPeace = *(wordCountHashMap.get("peace"));
-    size_t occurrencesOfToto = *(wordCountHashMap.get("toto"));
+    // Question 7 : Initialiser un vecteur à partir des entrées de la table de hash
+    vector<pair<string, int>> wordOccurrencesVector;
+    const auto& entries = wordCountHashMap.getEntries();
+    for (const auto& entry : entries) {
+        wordOccurrencesVector.emplace_back(entry.key, entry.value);
+    }
 
-    cout << "Occurrences of \"war\": " << occurrencesOfWar << endl;
-    cout << "Occurrences of \"peace\": " << occurrencesOfPeace << endl;
-    cout << "Occurrences of \"toto\": " << occurrencesOfToto << endl;
+    // Question 8 : Trier le vecteur par nombre d'occurrences décroissantes et afficher les dix mots les plus fréquents
+    sort(wordOccurrencesVector.begin(), wordOccurrencesVector.end(), [](const auto& a, const auto& b) {
+        return a.second > b.second;
+    });
+
+    cout << "Les mots les plus fréquents : " << endl;
+    for (size_t i = 0; i < min<size_t>(10, wordOccurrencesVector.size()); ++i) {
+        cout << wordOccurrencesVector[i].first << ": " << wordOccurrencesVector[i].second << " occurrences" << endl;
+    }
 
     return 0;
 }
+

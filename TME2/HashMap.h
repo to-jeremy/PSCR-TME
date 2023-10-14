@@ -68,6 +68,17 @@ namespace pr {
             buckets = other.buckets;
         }
 
+        std::vector<Entry> getEntries() const {
+            std::vector<Entry> entries;
+            for (const auto& bucket : buckets) {
+                for (const auto& entry : bucket) {
+                    entries.push_back(entry);
+                }
+            }
+            return entries;
+        }
+
+
         /*template <typename K>
         struct hash
         {
