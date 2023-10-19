@@ -17,7 +17,7 @@ void operation_transaction(pr::Banque& bank, int numTransactions) {
         bank.transfert(debiteur, crediteur, montant);
 
         // Simule un délai aléatoire entre 0 et 20 ms
-        this_thread::sleep_for(chrono::milliseconds(rand() % 21));
+        this_thread::sleep_for(chrono::milliseconds(rand() % 2));
     }
 }
 
