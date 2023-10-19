@@ -14,15 +14,15 @@ public :
 	bool debiter (unsigned int val) ;
 	int getSolde() const  ;
 
-	void lock() const { //Méthide lock() const pour la Q3 du TME3
+	void lock() const { //Méthide lock() const pour TME3
 		m.lock();
 	}
 
-	void unlock() const { //Méthide unlock() const pour la Q3 du TME3
+	void unlock() const { //Méthide unlock() const pour TME3
 		m.unlock();
 	}
 
-	bool try_lock() const { //Méthide try_lock() const pour la Q3 du TME3
+	bool try_lock() const { //Méthide try_lock() const pour TME3
 		return m.try_lock();
 	}
 };
