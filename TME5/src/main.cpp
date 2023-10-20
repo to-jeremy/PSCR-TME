@@ -6,6 +6,7 @@
 #include <fstream>
 #include <limits>
 #include <random>
+#include "Job.h"
 
 using namespace std;
 using namespace pr;
@@ -97,6 +98,16 @@ void exportImage(const char * path, size_t width, size_t height, Color * pixels)
 	// oui ca fait un gros fichier :D
 	img.close();
 }
+
+//Job concret
+class DrawJob : public pr::Job{
+private:
+	const Scene scene;
+	const std::vector<Vec3D> lights;
+	Color* pixels;
+	//x;
+	//y;
+};
 
 // NB : en francais pour le cours, preferez coder en english toujours.
 // pas d'accents pour eviter les soucis d'encodage
