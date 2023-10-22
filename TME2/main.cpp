@@ -3,7 +3,11 @@
 #include <regex>
 #include <chrono>
 #include <vector>
+#include <string>
+#include <cassert>
+
 #include "HashMap.h"
+#include "utils.h"
 
 int main() {
     using namespace std;
@@ -77,3 +81,17 @@ int main() {
     return 0;
 }
 
+int main2(){
+    using namespace std;
+
+    vector<string> vec;
+    vec.push_back("the");
+    vec.push_back("tata");
+    vec.push_back("toto");
+
+    assert(vec.size() == pr::count(vec.begin(), vec.end()));
+    assert(2 == pr::count_if_equal(vec.begin(), vec.end(), "the"));
+    assert(1 == pr::count_if_equal(vec.begin(), vec.end(), "tata"));
+
+    return 0;
+}

@@ -1,5 +1,6 @@
 //Question 1 et 2 TME3
 
+#ifndef UTILS_H_
 #define UTILS_H_
 
 #include <string>
@@ -7,7 +8,7 @@
 namespace pr {
 
 template<typename iterator>
-site_t count(iterator begin, iterator end){ //Q1
+size_t count(iterator begin, iterator end){ //Q1
     size_t sz = 0;
     while (begin != end) {
         ++begin;
