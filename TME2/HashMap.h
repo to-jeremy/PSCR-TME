@@ -79,24 +79,62 @@ namespace pr {
         }
 
 
-        /*template <typename K>
-        struct hash
-        {
-            site_t operator(const K &){};
-        }
+        //Q4 TME3 début
+        class iterator {
+            typename buckets_t::iterator buckend;
+
+            typename buckets_t::iterator vit;
+
+            typename std::forward_list<Entry>::iterator lit;
+
+        public :
+            iterator(const typename buckets_t::iterator & buckend, const typename buckets_t::iterator & vit, const typename std::forward_list<Entry>::iterator & lit):buckend(buckend), vit(vit), lit(lit){}
+
+            iterator & operator++(){
+                ++lit;
+
+                if (lit == vit->end()) {
+                    ++vit;
+
+                    while (vit->empty() && vit != buckend) {
+                        ++vit;
+                    }
+
+                    if (vit != buckend) {
+                        lit = vit->begin();
+                    }
+                }
+                return *this;
+            }
+
+            Entry & operator*(){
+                return *lit;
+            }
+
+            bool operator!=(iterator other) {
+                return vit != other.vit || lit != other.lit;
+            }
+        };
 
         iterator begin() {
-            size_t index = 0;
-            for (; index < buckets.size(); ++index)
-            {
-                if (!buckets[index].empty())
-                {
-                    break;
-                } // index==buckets.size()   size==0;<=>rendre end();
+            typename buckets_t::iterator vit = buckets.begin();
 
-                return iterator(buckets, index, buckets[index] begin());
+            while (vit->empty() && vit != buckets.end()) {
+                ++vit;
             }
-        }*/
+
+            if (vit != buckets.end()) {
+                return iterator(buckets.end(), vit, vit->begin());
+            } else {
+                return end;
+            }
+        }
+
+        iterator end() {
+            return iteraor(buckets.end(), buckets.end(), buckets.front().end());
+        }
+
+        //Q4 TME3 fin
     };
 }
 
