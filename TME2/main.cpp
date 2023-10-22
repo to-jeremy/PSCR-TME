@@ -52,6 +52,8 @@ int main() {
     size_t numberOfDifferentWords = wordCountHashMap.size();
     cout << "Nombre total de mots différents : " << numberOfDifferentWords << endl;
 
+
+    //TME2 début
     // Question 6 : Afficher le nombre d'occurrences de certains mots
     const string wordsToFind[] = {"war", "peace", "toto"};
     for (const string& targetWord : wordsToFind) {
@@ -72,6 +74,7 @@ int main() {
     sort(wordOccurrencesVector.begin(), wordOccurrencesVector.end(), [](const auto& a, const auto& b) {
         return a.second > b.second;
     });
+    //TME2 fin
 
     cout << "Les mots les plus fréquents : " << endl;
     for (size_t i = 0; i < min<size_t>(10, wordOccurrencesVector.size()); ++i) {
@@ -81,6 +84,8 @@ int main() {
     return 0;
 }
 
+
+//TM3
 int main2(){
     using namespace std;
 
