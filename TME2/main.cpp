@@ -5,6 +5,7 @@
 #include <vector>
 #include <string>
 #include <cassert>
+#include <algorithm>
 
 #include "HashMap.h"
 #include "utils.h"
@@ -85,7 +86,7 @@ int main() {
 }
 
 
-//TM3
+//TM3 Q3
 int main2(){
     using namespace std;
 
@@ -95,8 +96,36 @@ int main2(){
     vec.push_back("toto");
 
     assert(vec.size() == pr::count(vec.begin(), vec.end()));
-    assert(2 == pr::count_if_equal(vec.begin(), vec.end(), "the"));
+    assert(2 == pr::count_if_equal(vec.begin(), vec.end(), "toto"));
     assert(1 == pr::count_if_equal(vec.begin(), vec.end(), "tata"));
+
+    return 0;
+}
+
+//TME3 Q5&6
+int main3(){
+    using namespace std;
+    using namespace pr;
+
+    HashMap<string, int> map(100);
+
+    map.put("tutu", 12);
+    map.put("toto", 3);
+    map.put("tata", 5);
+
+    vector<HashMap<string, int>::Entry> vec;
+
+    for (auto &e : map) {
+        vec.push_back(e);
+    }
+
+    sort(vec.begin(), vec.end(), [](const auto &a, const auto &b) {
+        return a.velue > b.value;
+    });
+
+    for (auto &e : vec) {
+        cout << "mot :" << e.key <<  "freq : " << e.value << endl;
+    }
 
     return 0;
 }
