@@ -10,15 +10,15 @@ void Banque::transfert(size_t deb, size_t cred, unsigned int val) {
 	Compte & debiteur = comptes[deb];
 	Compte & crediteur = comptes[cred];
 
-	debiteur.lock(); //Question 4 TME3
-	crediteur.lock(); //Question 4 TME3
+	debiteur.lock(); //Question 4 TME4
+	crediteur.lock(); //Question 4 TME4
 
 	if (debiteur.debiter(val)) {
 		crediteur.crediter(val);
 	}
 
-	debiteur.unlock(); //Question 4 TME3
-	crediteur.unlock(); //Question 4 TME3
+	debiteur.unlock(); //Question 4 TME4
+	crediteur.unlock(); //Question 4 TME4
 }
 size_t Banque::size() const {
 	return comptes.size();
