@@ -3,6 +3,18 @@
 #include <sys/wait.h> //AJouter pour utiliser le wait
 #include <unistd.h>
 
+void attaque(pid_t adversaire) {
+
+}
+
+void defense() {
+
+}
+
+void combat(pid_t adversaire) {
+
+}
+
 int main (int argc, const char ** argv) {
 	const int N = 3;
 	std::vector<pid_t> children;
