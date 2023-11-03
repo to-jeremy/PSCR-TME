@@ -10,14 +10,14 @@
 #include "rsleep.h"
 
 //Question 3 pour le combat entre le processus principal (vador) et son fils (luke)
-int PV = 20;
+int PV = 5;
 
 void handler (int sig) {
 	if (sig == SIGUSR1) {
 		PV--;
 		std::cout << "Attaque reçue par " << getpid() << "; PV restants " << PV << std::endl;
 		if (PV == 0) {
-			std::cout << "PLus de vie pour " << getpid() << "; mort du processus." << std::endl;
+			std::cout << "Plus de vie pour " << getpid() << "; mort du processus." << std::endl;
 			exit(1);
 		}
 	}
