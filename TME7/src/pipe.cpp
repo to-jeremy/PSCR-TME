@@ -20,6 +20,8 @@ int main() {
     p=getpid();
     int pfd[2];
 
+    //execv ("pipe", "/bin/cat", "pipe.cpp", "\|", "/bin/wc", "-l");
+
     if(pipe(pfd)) {
         perror("Pipe");
         exit(1);
@@ -58,10 +60,19 @@ int main() {
     int pos=-1;
 
 }
+
+//int execv (const char *path, char * const argv[]) {}
+
+int main_execv (int argc, char **argv[]) {
+    execv ("/bin/cat", "pipe.cpp", "\|", "/bin/wc", "-l");
+    perror("execv");
+    return EXIT_SUCCESS;
+}
+
 //Fin question 1
 
-dup2(pipe1, 1);
-dup2(pipe0, 0);
+//dup2(pipe1 pfd[1], 1);
+//dup2(pipe0 pfd[0], 0);
 
 /*Détails persos à connaitre*/
 
