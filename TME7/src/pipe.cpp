@@ -90,7 +90,7 @@ int main (int argc, char ** argv) {
     }
 
     close(tube_principal[0]);
-    close(tube_principal(1));
+    close(tube_principal[1]);
 
     wait(0);
     wait(0);
